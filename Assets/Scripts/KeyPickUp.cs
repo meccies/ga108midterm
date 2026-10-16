@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class KeyPickUp : MonoBehaviour
 {
-    [SerializeField] GameObject key;
-   
+    public GameObject key;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
