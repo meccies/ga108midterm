@@ -1,25 +1,21 @@
-using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] Transform player;
-    [SerializeField] Rigidbody rb;
-    [SerializeField] float jumpForce = 2f;
+    public float playerSpeed = 5;
+    public Transform position;
 
     void Start()
     {
-        GetComponent<Rigidbody>();
+
     }
 
     void Update()
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-   
-            Debug.Log("Jumping");
-        }
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
+
+        Vector3 move = new Vector3(h, 0, v);
+        transform.Translate(move * playerSpeed * Time.deltaTime);
     }
 }
